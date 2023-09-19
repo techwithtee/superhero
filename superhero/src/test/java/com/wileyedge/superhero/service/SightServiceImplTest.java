@@ -28,7 +28,7 @@ public class SightServiceImplTest {
     }
 
     @Test
-    public void testCreateSighting_ValidInput() {
+    public void testCreateSightingValidInput() {
         // Create a Sighting object with valid data
         Sighting sighting = new Sighting();
         sighting.setSightTitle("Superman Spotted");
@@ -50,7 +50,7 @@ public class SightServiceImplTest {
     }
 
     @Test
-    public void testCreateSighting_InvalidInput() {
+    public void testCreateSightingInvalidInput() {
         // Create a Sighting object with invalid data (e.g., missing required fields)
         Sighting invalidSighting = new Sighting();
 

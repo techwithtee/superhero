@@ -33,6 +33,7 @@ public class LocDaoImpl implements LocDao {
     @Override
     public Location createLocation(Location location) {
         String query = "INSERT INTO location (location_name, location_desc, location_add, location_lat, location_long) VALUES (?, ?, ?, ?, ?)";
+
         jdbcTemplate.update(
                 query,
                 location.getLocationName(),

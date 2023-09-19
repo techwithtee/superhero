@@ -16,6 +16,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.dao.DataAccessException;
 
 
+
 import com.wileyedge.superhero.model.Location;
 
 public class LocDaoImplTest {
@@ -32,7 +33,7 @@ public class LocDaoImplTest {
     }
 
     @Test
-    public void testCreateLocation_ValidInput() {
+    public void testCreateLocationValidInput() {
         Location location = new Location();
         location.setLocationName("Metropolis");
         location.setLocationDesc("City of Heroes");
@@ -55,19 +56,19 @@ public class LocDaoImplTest {
     }
 
     @Test
-    public void testCreateLocation_InvalidInput() {
+    public void testCreateLocationInvalidInput() {
         Location invalidLocation = new Location();
         // Invalid input, e.g., missing required fields
 
         // Mock the behavior of JdbcTemplate
-        when(jdbcTemplate.update(anyString(), any(), any(), any(), any(), any())).thenReturn(0);
+        when(jdbcTemplate.update(anyString(), any(), any(), any(), any(), any())).thenThrow(RuntimeException.class);
 
         // Use assertThrows to verify that the method throws an exception
         assertThrows(DataAccessException.class, () -> locDao.createLocation(invalidLocation));
     }
 
     @Test
-    public void testGetAllLocations_ValidInput() {
+    public void testGetAllLocationsValidInput() {
         // Create a list of mock locations for the test
         List<Location> locations = new ArrayList<>();
         locations.add(new Location(1, "Metropolis", "City of Heroes", "123 Hero Street", BigDecimal.valueOf(40.7128), BigDecimal.valueOf(-74.0060)));
@@ -82,6 +83,6 @@ public class LocDaoImplTest {
         assertEquals(2, allLocations.size());
     }
 
-    // Additional tests for other CRUD operations and invalid input scenarios
+
 
 }

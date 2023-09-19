@@ -31,7 +31,7 @@ public class OrgDaoImplTest {
     }
 
     @Test
-    public void testCreateOrganisation_ValidInput() {
+    public void testCreateOrganisationValidInput() {
         Organisation org = new Organisation();
         org.setOrgName("Justice League");
         org.setOrgDesc("Superhero Team");
@@ -50,7 +50,7 @@ public class OrgDaoImplTest {
     }
 
     @Test
-    public void testCreateOrganisation_InvalidInput() {
+    public void testCreateOrganisationInvalidInput() {
         Organisation invalidOrg = new Organisation();
         // Invalid input, e.g., missing required fields
 
@@ -62,7 +62,7 @@ public class OrgDaoImplTest {
     }
 
     @Test
-    public void testGetAllOrganisations_ValidInput() {
+    public void testGetAllOrganisationsValidInput() {
         // Create a list of mock organizations for the test
         List<Organisation> orgs = new ArrayList<>();
         orgs.add(new Organisation(1, "Justice League", "Superhero Team"));

@@ -28,7 +28,7 @@ public class OrgServiceImplTest {
     }
 
     @Test
-    public void testCreateOrganisation_ValidInput() {
+    public void testCreateOrganisationValidInput() {
         // Create an Organisation object with valid data
         Organisation organisation = new Organisation();
         organisation.setOrgName("Justice League");
@@ -52,7 +52,7 @@ public class OrgServiceImplTest {
     }
 
     @Test
-    public void testCreateOrganisation_InvalidInput() {
+    public void testCreateOrganisationInvalidInput() {
         // Create an Organisation object with invalid data (e.g., missing required fields)
         Organisation invalidOrganisation = new Organisation();
 

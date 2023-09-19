@@ -28,7 +28,7 @@ public class LocServiceImplTest {
     }
 
     @Test
-    public void testCreateLocation_ValidInput() {
+    public void testCreateLocationValidInput() {
         // Create a Location object with valid data
         Location location = new Location();
         location.setLocationName("Metropolis");
@@ -52,7 +52,7 @@ public class LocServiceImplTest {
     }
 
     @Test
-    public void testCreateLocation_InvalidInput() {
+    public void testCreateLocationInvalidInput() {
         // Create a Location object with invalid data (e.g., missing required fields)
         Location invalidLocation = new Location();
 

@@ -30,7 +30,7 @@ public class SightDaoImplTest {
     }
 
     @Test
-    public void testCreateSighting_ValidInput() {
+    public void testCreateSightingValidInput() {
         Sighting sighting = new Sighting();
         sighting.setSightTitle("Superman Spotted");
         sighting.setSightingDate(/* Set a valid date */ "2023-09-13");
@@ -49,7 +49,7 @@ public class SightDaoImplTest {
     }
 
     @Test
-    public void testCreateSighting_InvalidInput() {
+    public void testCreateSightingInvalidInput() {
         Sighting invalidSighting = new Sighting();
         // Invalid input, e.g., missing required fields
 
@@ -61,7 +61,7 @@ public class SightDaoImplTest {
     }
 
     @Test
-    public void testGetAllSightings_ValidInput() {
+    public void testGetAllSightingsValidInput() {
         // Create a list of mock sightings for the test
         List<Sighting> sightings = new ArrayList<>();
         sightings.add(new Sighting(1, "Superman Spotted", "2023-09-13"));

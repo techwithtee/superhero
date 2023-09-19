@@ -28,7 +28,7 @@ public class HeroServiceImplTest {
     }
 
     @Test
-    public void testCreateHero_ValidInput() {
+    public void testCreateHeroValidInput() {
         // Create a Hero object with valid data
         Hero hero = new Hero();
         hero.setHeroName("Superman");
@@ -50,7 +50,7 @@ public class HeroServiceImplTest {
     }
 
     @Test
-    public void testCreateHero_InvalidInput() {
+    public void testCreateHeroInvalidInput() {
         // Create a Hero object with invalid data (e.g., missing required fields)
         Hero invalidHero = new Hero();
 

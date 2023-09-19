@@ -31,7 +31,7 @@ public class HeroDaoImplTest {
     }
 
     @Test
-    public void testCreateHero_ValidInput() {
+    public void testCreateHeroValidInput() {
         Hero hero = new Hero();
         hero.setHeroName("Superman");
         hero.setHeroDesc("Man of Steel");
@@ -50,7 +50,7 @@ public class HeroDaoImplTest {
     }
 
     @Test
-    public void testCreateHero_InvalidInput() {
+    public void testCreateHeroInvalidInput() {
         Hero invalidHero = new Hero();
         // Set invalid input, e.g., missing required fields
 
@@ -64,7 +64,7 @@ public class HeroDaoImplTest {
 
 
     @Test
-    public void testGetAllHeroes_ValidInput() {
+    public void testGetAllHeroesValidInput() {
         // Create a list of mock heroes for the test
         List<Hero> heroes = new ArrayList<>();
         heroes.add(new Hero(1, "Superman", "Man of Steel", "Flight, Super Strength"));
