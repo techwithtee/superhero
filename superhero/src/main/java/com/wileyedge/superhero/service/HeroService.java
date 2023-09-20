@@ -13,7 +13,6 @@ public interface HeroService {
     void updateHero(Hero hero);
     void deleteHero(int id);
     List<HeroOrg> getOrganisationsOfHero(int heroId);
-
     void recordHeroSighting(HeroSighting heroSighting);
 
 

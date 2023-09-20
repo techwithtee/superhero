@@ -85,5 +85,4 @@ public class OrgServiceImplTest {
         verify(orgDao, times(1)).getAllOrganisations();
     }
 
-    // Add more test methods for other Organisation Service functionality (update, delete, etc.)
 }

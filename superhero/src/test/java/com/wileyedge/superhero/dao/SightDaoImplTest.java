@@ -64,6 +64,5 @@ public class SightDaoImplTest {
         assertEquals(2, allSightings.size());
     }
 
-    // Additional tests for other CRUD operations and invalid input scenarios
 
 }

@@ -83,5 +83,4 @@ public class SightServiceImplTest {
         verify(sightDao, times(1)).getAllSightings();
     }
 
-    // Add more test methods for other Sighting Service functionality (update, delete, etc.)
 }

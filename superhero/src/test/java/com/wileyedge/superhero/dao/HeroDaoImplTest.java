@@ -66,6 +66,4 @@ public class HeroDaoImplTest {
         assertEquals(2, allHeroes.size());
     }
 
-    // Additional tests for other CRUD operations and invalid input scenarios
-
 }

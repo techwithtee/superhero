@@ -66,6 +66,6 @@ public class OrgDaoImplTest {
         assertEquals(2, allOrgs.size());
     }
 
-    // Additional tests for other CRUD operations and invalid input scenarios
+
 
 }

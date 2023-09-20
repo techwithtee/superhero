@@ -13,7 +13,6 @@ public interface SightService {
     void updateSighting(Sighting sighting);
     void deleteSighting(int id);
     List<HeroSighting> getSuperheroesAtLocation(int locationId);
-
     List<HeroSighting> getSightingsByDate(LocalDate date);
 
 

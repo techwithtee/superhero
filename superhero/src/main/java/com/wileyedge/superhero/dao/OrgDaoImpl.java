@@ -24,7 +24,6 @@ public class OrgDaoImpl implements OrgDao {
             organisation.setOrgName(rs.getString("org_name"));
             organisation.setOrgDesc(rs.getString("org_desc"));
             organisation.setOrgContact(rs.getString("org_contact"));
-            // You can map other fields here if needed
             return organisation;
         };
     }

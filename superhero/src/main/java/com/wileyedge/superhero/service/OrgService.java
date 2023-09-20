@@ -10,7 +10,6 @@ public interface OrgService {
     List<Organisation> getAllOrganisations();
     void updateOrganisation(Organisation organisation);
     void deleteOrganisation(int id);
-
     List<HeroOrg> getMembersOfOrganisation(int orgId);
 
 }

@@ -24,7 +24,6 @@ public class SightDaoImpl implements SightDao {
             sighting.setSightId(rs.getInt("sight_id"));
             sighting.setSightTitle(rs.getString("sight_title"));
             sighting.setSightingDate(String.valueOf(rs.getDate("sighting_date")));
-            // You can map other fields here if needed
             return sighting;
         };
     }

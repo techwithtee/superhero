@@ -25,7 +25,6 @@ public class LocDaoImpl implements LocDao {
             location.setLocationAddress(rs.getString("location_add"));
             location.setLocationLat(rs.getBigDecimal("location_lat"));
             location.setLocationLong(rs.getBigDecimal("location_long"));
-            // You can map other fields here if needed
             return location;
         };
     }

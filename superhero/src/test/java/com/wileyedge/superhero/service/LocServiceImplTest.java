@@ -85,5 +85,4 @@ public class LocServiceImplTest {
         verify(locDao, times(1)).getAllLocations();
     }
 
-    // Add more test methods for other Location Service functionality (update, delete, etc.)
 }
