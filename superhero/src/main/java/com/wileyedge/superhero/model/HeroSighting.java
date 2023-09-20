@@ -50,7 +50,7 @@ public class HeroSighting {
         this.sightId = sightId;
     }
 
-    public String getSightingDate() {
+    public LocalDate getSightingDate() {
         return sightingDate;
     }
 
