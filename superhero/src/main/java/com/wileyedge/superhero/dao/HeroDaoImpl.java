@@ -1,6 +1,8 @@
 package com.wileyedge.superhero.dao;
 
 import com.wileyedge.superhero.model.Hero;
+import com.wileyedge.superhero.model.HeroOrg;
+import com.wileyedge.superhero.model.HeroSighting;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -57,4 +59,36 @@ public class HeroDaoImpl implements HeroDao {
         jdbcTemplate.update(query, hero.getHeroName(), hero.getHeroDesc(), hero.getSuperpower());
         return hero;
     }
+
+    @Override
+    public List<HeroOrg> getOrganisationsOfHero(int heroId) {
+        String query = "SELECT hero.hero_id, hero.hero_name, org.org_id, org.org_name " +
+                "FROM hero " +
+                "JOIN hero_organisation ho ON hero.hero_id = ho.hero_id " +
+                "JOIN organisation org ON ho.org_id = org.org_id " +
+                "WHERE hero.hero_id = ?";
+
+        return jdbcTemplate.query(query, new Object[]{heroId}, (resultSet, i) -> {
+            HeroOrg heroOrg = new HeroOrg();
+            heroOrg.setHeroId(resultSet.getInt("hero_id"));
+            heroOrg.setHeroName(resultSet.getString("hero_name"));
+            heroOrg.setOrgId(resultSet.getInt("org_id"));
+            heroOrg.setOrgName(resultSet.getString("org_name"));
+            return heroOrg;
+        });
+    }
+
+    @Override
+    public void recordHeroSighting(HeroSighting heroSighting) {
+        // Implement the logic to insert the sighting data into the database
+        String sql = "INSERT INTO hero_sighting (hero_id, location_id, sighting_date) VALUES (?, ?, ?)";
+
+        jdbcTemplate.update(
+                sql,
+                heroSighting.getHeroId(),
+                heroSighting.getLocationId(),
+                heroSighting.getSightingDate()
+        );
+    }
+
 }

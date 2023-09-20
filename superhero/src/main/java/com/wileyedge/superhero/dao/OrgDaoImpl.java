@@ -1,5 +1,6 @@
 package com.wileyedge.superhero.dao;
 
+import com.wileyedge.superhero.model.HeroOrg;
 import com.wileyedge.superhero.model.Organisation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -60,7 +61,8 @@ public class OrgDaoImpl implements OrgDao {
                 query,
                 organisation.getOrgName(),
                 organisation.getOrgDesc(),
-                organisation.getOrgContact()
+                organisation.getOrgContact(),
+                organisation.getOrgId()
         );
         return organisation;
     }
@@ -70,4 +72,25 @@ public class OrgDaoImpl implements OrgDao {
         String query = "DELETE FROM organisation WHERE org_id=?";
         jdbcTemplate.update(query, id);
     }
+
+    @Override
+    public List<HeroOrg> getMembersOfOrganisation(int orgId) {
+        String query = "SELECT hero.hero_id, hero.hero_name, org.org_id, org.org_name " +
+                "FROM hero " +
+                "JOIN hero_organisation ho ON hero.hero_id = ho.hero_id " +
+                "JOIN organisation org ON ho.org_id = org.org_id " +
+                "WHERE org.org_id = ?";
+
+        return jdbcTemplate.query(query, new Object[]{orgId}, (resultSet, i) -> {
+            HeroOrg heroOrg = new HeroOrg();
+            heroOrg.setHeroId(resultSet.getInt("hero_id"));
+            heroOrg.setHeroName(resultSet.getString("hero_name"));
+            heroOrg.setOrgId(resultSet.getInt("org_id"));
+            heroOrg.setOrgName(resultSet.getString("org_name"));
+            return heroOrg;
+        });
+    }
+
+
+
 }

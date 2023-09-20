@@ -76,4 +76,26 @@ public class LocDaoImpl implements LocDao {
         String query = "DELETE FROM location WHERE location_id=?";
         jdbcTemplate.update(query, id);
     }
+
+    @Override
+    public List<Location> getLocationsByHero(int heroId) {
+        String query = "SELECT l.location_id, l.location_name " +
+                "FROM location l " +
+                "JOIN sighting s ON l.location_id = s.location_id " +
+                "JOIN hero_sighting hs ON s.sight_id = hs.sight_id " +
+                "WHERE hs.hero_id = ?";
+
+        return jdbcTemplate.query(
+                query,
+                new Object[] { heroId },
+                (rs, rowNum) -> {
+                    Location location = new Location();
+                    location.setLocationId(rs.getInt("location_id"));
+                    location.setLocationName(rs.getString("location_name"));
+                    // Set other fields if needed
+                    return location;
+                }
+        );
+    }
+
 }

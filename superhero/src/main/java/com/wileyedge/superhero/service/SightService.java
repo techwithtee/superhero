@@ -1,6 +1,9 @@
 package com.wileyedge.superhero.service;
 
+import com.wileyedge.superhero.model.HeroSighting;
 import com.wileyedge.superhero.model.Sighting;
+
+import java.time.LocalDate;
 import java.util.List;
 
 public interface SightService {
@@ -9,4 +12,9 @@ public interface SightService {
     List<Sighting> getAllSightings();
     void updateSighting(Sighting sighting);
     void deleteSighting(int id);
+    List<HeroSighting> getSuperheroesAtLocation(int locationId);
+
+    List<HeroSighting> getSightingsByDate(LocalDate date);
+
+
 }

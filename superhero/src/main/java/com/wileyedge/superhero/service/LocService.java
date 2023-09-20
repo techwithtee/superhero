@@ -9,4 +9,5 @@ public interface LocService {
     List<Location> getAllLocations();
     void updateLocation(Location location);
     void deleteLocation(int id);
+    List<Location> getLocationsByHero(int heroId);
 }

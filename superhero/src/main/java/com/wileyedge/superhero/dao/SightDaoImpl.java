@@ -1,12 +1,13 @@
 package com.wileyedge.superhero.dao;
 
+import com.wileyedge.superhero.model.HeroSighting;
 import com.wileyedge.superhero.model.Sighting;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
-import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -57,7 +58,8 @@ public class SightDaoImpl implements SightDao {
         jdbcTemplate.update(
                 query,
                 sighting.getSightTitle(),
-                sighting.getSightingDate()
+                sighting.getSightingDate(),
+                sighting.getSightId()
         );
         return sighting;
     }
@@ -67,4 +69,47 @@ public class SightDaoImpl implements SightDao {
         String query = "DELETE FROM sighting WHERE sight_id=?";
         jdbcTemplate.update(query, id);
     }
+
+
+    @Override
+    public List<HeroSighting> getSuperheroesAtLocation(int locationId) {
+        String query = "SELECT hero.hero_name " +
+                "FROM hero " +
+                "INNER JOIN hero_sighting ON hero.hero_id = hero_sighting.hero_id " +
+                "INNER JOIN sighting ON hero_sighting.sight_id = sighting.sight_id " +
+                "WHERE sighting.location_id = ?";
+
+        return jdbcTemplate.query(query, new Object[]{locationId}, (rs, rowNum) -> {
+            HeroSighting heroSighting = new HeroSighting();
+            heroSighting.setHeroName(rs.getString("hero_name"));
+            return heroSighting;
+        });
+    }
+
+    @Override
+    public List<HeroSighting> getSightingsByDate(LocalDate date) {
+        String sql = "SELECT h.hero_id, h.hero_name, s.sight_id, s.sighting_date, l.location_id, l.location_name " +
+                "FROM sighting s " +
+                "JOIN hero_sighting hs ON s.sight_id = hs.sight_id " +
+                "JOIN hero h ON hs.hero_id = h.hero_id " +
+                "JOIN location l ON s.location_id = l.location_id " +
+                "WHERE s.sighting_date = ?";
+
+        return jdbcTemplate.query(
+                sql,
+                new Object[] { date },
+                (rs, rowNum) -> {
+                    HeroSighting heroSighting = new HeroSighting();
+                    heroSighting.setHeroId(rs.getInt("hero_id"));
+                    heroSighting.setHeroName(rs.getString("hero_name"));
+                    heroSighting.setSightId(rs.getInt("sight_id"));
+                    heroSighting.setSightingDate(rs.getDate("sighting_date").toLocalDate());
+                    heroSighting.setLocationId(rs.getInt("location_id"));
+                    heroSighting.setLocationName(rs.getString("location_name"));
+                    return heroSighting;
+                }
+        );
+    }
+
+
 }

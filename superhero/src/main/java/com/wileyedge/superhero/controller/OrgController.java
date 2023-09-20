@@ -1,8 +1,11 @@
 package com.wileyedge.superhero.controller;
 
+import com.wileyedge.superhero.model.HeroOrg;
 import com.wileyedge.superhero.model.Organisation;
 import com.wileyedge.superhero.service.OrgService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -42,4 +45,11 @@ public class OrgController {
     public void deleteOrganisation(@PathVariable int id) {
         orgService.deleteOrganisation(id);
     }
+
+    @GetMapping("/organisations/{orgId}/members")
+    public ResponseEntity<List<HeroOrg>> getMembersOfOrganisation(@PathVariable int orgId) {
+        List<HeroOrg> members = orgService.getMembersOfOrganisation(orgId);
+        return new ResponseEntity<>(members, HttpStatus.OK);
+    }
+
 }

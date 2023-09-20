@@ -41,4 +41,10 @@ public class LocServiceImpl implements LocService {
     public void deleteLocation(int id) {
         locDao.deleteLocation(id);
     }
+
+    @Override
+    public List<Location> getLocationsByHero(int heroId) {
+        return locDao.getLocationsByHero(heroId);
+    }
+
 }

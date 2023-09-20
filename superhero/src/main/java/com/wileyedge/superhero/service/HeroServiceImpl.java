@@ -2,6 +2,9 @@ package com.wileyedge.superhero.service;
 
 import com.wileyedge.superhero.dao.HeroDao;
 import com.wileyedge.superhero.model.Hero;
+import com.wileyedge.superhero.model.HeroOrg;
+import com.wileyedge.superhero.model.HeroSighting;
+import com.wileyedge.superhero.model.Sighting;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,4 +44,16 @@ public class HeroServiceImpl implements HeroService {
     public void deleteHero(int id) {
         heroDao.deleteHero(id);
     }
+
+    @Override
+    public List<HeroOrg> getOrganisationsOfHero(int heroId) {
+        return heroDao.getOrganisationsOfHero(heroId);
+    }
+
+    @Override
+    public void recordHeroSighting(HeroSighting heroSighting) {
+        heroDao.recordHeroSighting(heroSighting);
+    }
+
+
 }

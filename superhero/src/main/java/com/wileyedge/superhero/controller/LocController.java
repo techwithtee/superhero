@@ -3,6 +3,8 @@ package com.wileyedge.superhero.controller;
 import com.wileyedge.superhero.model.Location;
 import com.wileyedge.superhero.service.LocService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -42,4 +44,11 @@ public class LocController {
     public void deleteLocation(@PathVariable int id) {
         locService.deleteLocation(id);
     }
+
+    @GetMapping("/locations/{heroId}")
+    public ResponseEntity<List<Location>> getLocationsByHero(@PathVariable int heroId) {
+        List<Location> locations = locService.getLocationsByHero(heroId);
+        return new ResponseEntity<>(locations, HttpStatus.OK);
+    }
+
 }

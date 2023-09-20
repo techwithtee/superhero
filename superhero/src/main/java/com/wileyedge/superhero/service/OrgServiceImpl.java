@@ -1,6 +1,7 @@
 package com.wileyedge.superhero.service;
 
 import com.wileyedge.superhero.dao.OrgDao;
+import com.wileyedge.superhero.model.HeroOrg;
 import com.wileyedge.superhero.model.Organisation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,4 +42,10 @@ public class OrgServiceImpl implements OrgService {
     public void deleteOrganisation(int id) {
         orgDao.deleteOrganisation(id);
     }
+
+    @Override
+    public List<HeroOrg> getMembersOfOrganisation(int orgId) {
+        return orgDao.getMembersOfOrganisation(orgId);
+    }
+
 }

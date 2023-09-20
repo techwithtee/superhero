@@ -15,4 +15,6 @@ public interface LocDao {
     void updateLocation(Location location);
 
     void deleteLocation(int id);
+
+    List<Location> getLocationsByHero(int heroId);
 }
