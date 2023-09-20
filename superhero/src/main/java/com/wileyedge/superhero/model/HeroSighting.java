@@ -4,13 +4,11 @@ import java.time.LocalDate;
 
 public class HeroSighting {
     private int heroId;
-    private String heroName; // New field for hero name
+    private String heroName;
     private int sightId;
     private LocalDate sightingDate;
     private int locationId;
-    private String locationName; // New field for location name
-
-    // Constructors, getters, and setters
+    private String locationName;
 
     public HeroSighting() {
     }

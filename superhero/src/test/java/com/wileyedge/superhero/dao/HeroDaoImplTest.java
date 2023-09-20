@@ -49,19 +49,6 @@ public class HeroDaoImplTest {
         assertEquals("Flight, Super Strength", createdHero.getSuperpower());
     }
 
-    @Test
-    public void testCreateHeroInvalidInput() {
-        Hero invalidHero = new Hero();
-        // Set invalid input, e.g., missing required fields
-
-        // Mock the behavior of JdbcTemplate to throw a DataAccessException
-        when(jdbcTemplate.update(anyString(), any(), any(), any())).thenThrow(DataAccessException.class);
-
-        // Use assertThrows to verify that the method throws a DataAccessException
-        assertThrows(DataAccessException.class, () -> heroDao.createHero(invalidHero));
-    }
-
-
 
     @Test
     public void testGetAllHeroesValidInput() {

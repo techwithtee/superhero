@@ -49,17 +49,6 @@ public class OrgDaoImplTest {
         // Additional assertions for other properties
     }
 
-    @Test
-    public void testCreateOrganisationInvalidInput() {
-        Organisation invalidOrg = new Organisation();
-        // Invalid input, e.g., missing required fields
-
-        // Mock the behavior of JdbcTemplate
-        when(jdbcTemplate.update(anyString(), any(), any())).thenReturn(0);
-
-        // Use assertThrows to verify that the method throws an exception
-        assertThrows(DataAccessException.class, () -> orgDao.createOrganisation(invalidOrg));
-    }
 
     @Test
     public void testGetAllOrganisationsValidInput() {

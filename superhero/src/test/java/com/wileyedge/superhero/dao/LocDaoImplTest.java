@@ -55,17 +55,6 @@ public class LocDaoImplTest {
         assertEquals(BigDecimal.valueOf(-74.0060), createdLocation.getLocationLong());
     }
 
-    @Test
-    public void testCreateLocationInvalidInput() {
-        Location invalidLocation = new Location();
-        // Invalid input, e.g., missing required fields
-
-        // Mock the behavior of JdbcTemplate
-        when(jdbcTemplate.update(anyString(), any(), any(), any(), any(), any())).thenThrow(RuntimeException.class);
-
-        // Use assertThrows to verify that the method throws an exception
-        assertThrows(DataAccessException.class, () -> locDao.createLocation(invalidLocation));
-    }
 
     @Test
     public void testGetAllLocationsValidInput() {

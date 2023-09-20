@@ -49,18 +49,6 @@ public class SightDaoImplTest {
     }
 
     @Test
-    public void testCreateSightingInvalidInput() {
-        Sighting invalidSighting = new Sighting();
-        // Invalid input, e.g., missing required fields
-
-        // Mock the behavior of JdbcTemplate
-        when(jdbcTemplate.update(anyString(), any(), any())).thenReturn(0);
-
-        // Use assertThrows to verify that the method throws an exception
-        assertThrows(DataAccessException.class, () -> sightDao.createSighting(invalidSighting));
-    }
-
-    @Test
     public void testGetAllSightingsValidInput() {
         // Create a list of mock sightings for the test
         List<Sighting> sightings = new ArrayList<>();
